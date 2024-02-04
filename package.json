@@ -1,0 +1,14 @@
+{
+  "name": "microservice-notification-fastify",
+  "version": "1.0.0",
+  "main": "server.js",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "fastify": "^4.26.0",
+    "fastify-cli": "^6.1.0"
+  },
+  "scripts": {
+    "start": "fastify start main.js"
+  }
+}

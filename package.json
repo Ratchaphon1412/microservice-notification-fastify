@@ -6,7 +6,10 @@
   "type": "module",
   "dependencies": {
     "fastify": "^4.26.0",
-    "fastify-cli": "^6.1.0"
+    "fastify-cli": "^6.1.0",
+    "fastify-graceful-shutdown": "^3.5.1",
+    "fastify-kafkajs": "^0.1.0",
+    "node-rdkafka": "^2.18.0"
   },
   "scripts": {
     "start": "fastify start main.js"

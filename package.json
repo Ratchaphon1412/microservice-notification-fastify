@@ -9,7 +9,7 @@
     "fastify-cli": "^6.1.0",
     "fastify-graceful-shutdown": "^3.5.1",
     "fastify-kafkajs": "^0.1.0",
-    "fastify-plugin": "^4.5.1",
+    "fastify-nodemailer": "^5.0.0",
     "node-rdkafka": "^2.18.0"
   },
   "scripts": {

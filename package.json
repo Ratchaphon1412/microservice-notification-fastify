@@ -1,7 +1,7 @@
 {
   "name": "microservice-notification-fastify",
   "version": "1.0.0",
-  "main": "server.js",
+  "main": "main.js",
   "license": "MIT",
   "type": "module",
   "dependencies": {
@@ -9,9 +9,10 @@
     "fastify-cli": "^6.1.0",
     "fastify-graceful-shutdown": "^3.5.1",
     "fastify-kafkajs": "^0.1.0",
+    "fastify-plugin": "^4.5.1",
     "node-rdkafka": "^2.18.0"
   },
   "scripts": {
-    "start": "fastify start main.js"
+    "start": "node main.js"
   }
 }

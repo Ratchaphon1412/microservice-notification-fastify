@@ -9,10 +9,16 @@ services:
     volumes:
       - .:/app
     environment:
-      ADDRESS: 0.0.0.0
-      PORT: 3000
-      KAFKA_BROKER: kafka:9092
-      KAFKA_CONSUMER_GROUP: email-service
+      ADDRESS: ${ADDRESS}
+      PORT: ${PORT}
+      KAFKA_BROKER: ${KAFKA_BROKER}
+      KAFKA_CONSUMER_GROUP: ${KAFKA_CONSUMER_GROUP}
+      MAIL_HOST: ${MAIL_HOST}
+      MAIL_SERVICE: ${MAIL_SERVICE}
+      MAIL_PORT: ${MAIL_PORT}
+      MAIL_SECURE: ${MAIL_SECURE}
+      MAIL_USER: ${MAIL_USER}
+      MAIL_PASS: ${MAIL_PASS}
     networks:
       - kafka-nework
   zookeeper:

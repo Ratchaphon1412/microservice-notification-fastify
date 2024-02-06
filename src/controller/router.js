@@ -1,4 +1,7 @@
 import { sendNotification } from "../utils/notification/mail.js";
+import fs from "fs";
+import handlebars from 'handlebars';
+
 
 const router = async (fastifyInstance,options,next)=> {
     fastifyInstance.get('/', async function handler (request, reply) {
@@ -21,7 +24,10 @@ const router = async (fastifyInstance,options,next)=> {
 
     fastifyInstance.get('/mail',async function handler (request, reply) {
         let { nodemailer } = fastifyInstance;
-        sendNotification(nodemailer,"Test","sevenknight5570@gmail.com","Test","Test","Test")
+        const html = await fastifyInstance.render("verifyemail", { link: "https://google.com",email:"sevenknight5570@gmail.com",logo:"https://merakiui.com/images/full-logo.svg" });
+
+        
+        sendNotification(nodemailer,"pixelman@ratchaphon1412.co","sevenknight5570@gmail.com","Verify Email - Pixelman Thailand",html)
 
     })
 

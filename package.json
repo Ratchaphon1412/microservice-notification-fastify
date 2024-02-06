@@ -5,14 +5,18 @@
   "license": "MIT",
   "type": "module",
   "dependencies": {
+    "@fastify/view": "^8.2.0",
     "fastify": "^4.26.0",
     "fastify-cli": "^6.1.0",
     "fastify-graceful-shutdown": "^3.5.1",
     "fastify-kafkajs": "^0.1.0",
     "fastify-nodemailer": "^5.0.0",
+    "handlebars": "^4.7.8",
+    "mailwind": "^2.2.0",
     "node-rdkafka": "^2.18.0"
   },
   "scripts": {
     "start": "node main.js"
-  }
+  },
+  "devDependencies": {}
 }

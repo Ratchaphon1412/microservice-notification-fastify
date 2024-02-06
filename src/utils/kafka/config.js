@@ -1,5 +1,5 @@
-
-
+import {fastify} from "../../../main.js";
+import { sendNotification } from "../notification/mail.js";
 
 export const configKafka = {
     clientConfig:{
@@ -12,32 +12,24 @@ export const configKafka = {
                 groupId: process.env.KAFKA_CONSUMER_GROUP || 'email-service'
             },
             subscription: {
-                topics: ['test'],
+                topics: ['email-service-topic'],
                 fromBeginning: false
             },
             runConfig: {
                 eachMessage: async ({ message }) => {
-                    console.log(`Consumed message: ${message.value}`);
+                    console.log(`Consumed message: ${message.value} on partition ${message.partition}  with offset ${message.offset}  from topic ${message.topic} key ${message.key}`);
+                    let { nodemailer } = fastify;
+                    console.log("Received message: " + message.value);
+                    const messageJson = JSON.parse(message.value);
+                    const html = await fastify.render("verifyemail", { link: messageJson.link});
+                    console.log("Send email to " + messageJson.to);
+                    sendNotification(nodemailer, "pixelman@ratchaphon1412.co", messageJson.to, "Verify Email - PixelMan Shop Thailand", html);
                 }
+
+
             }
         }
     ]
 }
     
 
-// export const configKafka = {
-//     producer: {
-//       'metadata.broker.list': 'kafka:9092',
-//       'group.id': "email-service",
-//       'fetch.wait.max.ms': 10,
-//       'fetch.error.backoff.ms': 50,
-//       'dr_cb': true
-//     },
-//     consumer: {
-//       'metadata.broker.list': 'kafka:9092',
-//       'group.id':"email-service",
-//       'fetch.wait.max.ms': 10,
-//       'fetch.error.backoff.ms': 50,
-//       'auto.offset.reset': 'earliest'
-//     }
-//   }
